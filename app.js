@@ -1,4 +1,3 @@
-// app.js
 const express = require('express');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
@@ -15,11 +14,11 @@ connectDB();
 // Middleware
 app.use(cors({
     origin: 'https://imit-abhijiths-projects-608231bf.vercel.app',  
-    credentials: true                 
-  }));
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
-
-
 
 // Routes
 app.use('/api', authRoutes);
