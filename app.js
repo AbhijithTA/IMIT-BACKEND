@@ -14,7 +14,7 @@ connectDB();
 
 // Middleware
 app.use(cors({
-    origin: 'https://imit-abhijiths-projects-608231bf.vercel.app/',  
+    origin: 'https://imit-abhijiths-projects-608231bf.vercel.app',  
     credentials: true                 
   }));
 app.use(express.json());
