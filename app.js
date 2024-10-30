@@ -13,8 +13,8 @@ connectDB();
 
 // Middleware
 app.use(cors({
-    // origin: 'https://imit-abhijiths-projects-608231bf.vercel.app',
-    origin: 'http://localhost:5173',
+    origin: 'https://imit-abhijiths-projects-608231bf.vercel.app',
+    // origin: 'http://localhost:5173',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
