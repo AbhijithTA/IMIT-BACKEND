@@ -1,9 +1,9 @@
-const express = require('express');
-const connectDB = require('./config/db');
-const authRoutes = require('./routes/authRoutes');
-const postRoutes = require('./routes/postRoutes');
-const dotenv = require('dotenv');
-const cors = require('cors');
+import express from 'express';
+import connectDB from './config/db.js';
+import authRoutes from './routes/authRoutes.js';
+import postRoutes from './routes/postRoutes.js';
+import dotenv from 'dotenv';
+import cors from 'cors';
 
 dotenv.config();
 const app = express();
@@ -13,7 +13,8 @@ connectDB();
 
 // Middleware
 app.use(cors({
-    origin: 'https://imit-abhijiths-projects-608231bf.vercel.app',  
+    // origin: 'https://imit-abhijiths-projects-608231bf.vercel.app',
+    origin: 'http://localhost:5173',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']

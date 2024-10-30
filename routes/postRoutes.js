@@ -1,10 +1,14 @@
+import express from 'express';
+import { createPost, getPosts, likePost, commentPost } from '../controllers/postController.js';
+import authMiddleware from '../middlewares/authMiddleware.js';
+import multer from 'multer';
 
-const express = require('express');
-const { createPost, getPosts } = require('../controllers/postController');
-const authMiddleware = require('../middlewares/authMiddleware');
 const router = express.Router();
+const upload = multer();
 
-router.post('/', authMiddleware, createPost);
+router.post('/', authMiddleware,upload.single('image'), createPost);
 router.get('/', authMiddleware, getPosts);
+router.post('/:postId/like', authMiddleware, likePost);
+router.post('/:postId/comment', authMiddleware, commentPost);
 
-module.exports = router;
+export default router;

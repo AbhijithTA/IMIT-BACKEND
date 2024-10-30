@@ -1,8 +1,7 @@
-
-const User = require('../models/User');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const dotenv = require('dotenv');
+import User from '../models/User.js';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+import dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -10,7 +9,7 @@ const generateToken = (user) => {
   return jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
 };
 
-exports.register = async (req, res) => {
+export const register = async (req, res) => {
   const { username, email, password } = req.body;
   try {
     const user = new User({ username, email, password });
@@ -21,7 +20,7 @@ exports.register = async (req, res) => {
   }
 };
 
-exports.login = async (req, res) => {
+export const login = async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
@@ -35,7 +34,7 @@ exports.login = async (req, res) => {
   }
 };
 
-exports.profile = async (req, res) => {
+export const profile = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
     res.status(200).json(user);
